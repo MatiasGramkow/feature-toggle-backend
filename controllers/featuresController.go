@@ -29,11 +29,13 @@ func CreateFeature(c *fiber.Ctx) error {
 		IsActive:           data.IsActive,
 		Description:        data.Description,
 		DeactivationReason: data.DeactivationReason,
+		StartDate:          data.StartDate,
+		StopDate:           data.StopDate,
 	}
 
-	result := database.DB.Create(&feature)
+	database.DB.Create(&feature)
 
-	return c.JSON(result)
+	return c.JSON(feature)
 }
 
 // UpdateFeature Method
